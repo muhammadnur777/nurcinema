@@ -1,6 +1,8 @@
 from django.db.models import Model, CharField, IntegerField, \
     ForeignKey, TextField, DateField, FloatField, BooleanField,\
-    DateTimeField, TextChoices, ImageField, FileField, CASCADE
+    DateTimeField, TextChoices, ImageField, FileField, CASCADE, SlugField
+    
+from django.template.defaultfilters import slugify
 
 
 class QualityChoices(TextChoices):
@@ -51,11 +53,18 @@ class Movie(Model):
                      default=MovieTypeChoices.REGULAR, 
                      help_text="Kino joylashuvi")
     
+    slug = SlugField(unique=True)
+
     created_at = DateTimeField(auto_now=True)
     updated_at = DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class Genre(Model):
