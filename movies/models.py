@@ -1,9 +1,9 @@
 from django.db.models import Model, CharField, IntegerField, \
     ForeignKey, TextField, DateField, FloatField, BooleanField,\
-    DateTimeField, TextChoices, ImageField, FileField, CASCADE, SlugField
-    
+    DateTimeField, TextChoices, ImageField, FileField, CASCADE,\
+    SlugField
 from django.template.defaultfilters import slugify
-
+from django.db.utils import IntegrityError
 
 class QualityChoices(TextChoices):
     HD = 'hd', 'HD'
@@ -53,8 +53,7 @@ class Movie(Model):
                      default=MovieTypeChoices.REGULAR, 
                      help_text="Kino joylashuvi")
     
-    slug = SlugField(unique=True)
-
+    slug = SlugField(unique=True, null=True, blank=True)
     created_at = DateTimeField(auto_now=True)
     updated_at = DateTimeField(auto_now_add=True)
 
@@ -62,8 +61,12 @@ class Movie(Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        if self.slug is None:
+            try:
+                self.slug = slugify(self.title)
+            except IntegrityError:
+                self.slug += str(1)                
 
-        self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
 

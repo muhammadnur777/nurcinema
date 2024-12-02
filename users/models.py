@@ -1,5 +1,5 @@
 from django.db.models import Model, ForeignKey, \
-    TextField, SET_NULL, CASCADE
+    TextField, CASCADE
 from django.contrib.auth.models import AbstractUser
 from movies.models import Movie
 
@@ -9,6 +9,6 @@ class User(AbstractUser):
 
 
 class UserReview(Model):
-    user = ForeignKey(User, on_delete=SET_NULL)
+    user = ForeignKey(User, on_delete=CASCADE)
     movie = ForeignKey(Movie, on_delete=CASCADE)
     comment = TextField()
