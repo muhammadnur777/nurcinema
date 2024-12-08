@@ -40,7 +40,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a href="{% url 'home' %}">
-                            <img src="{% static 'img/logo.png' %}" alt="Logo">
+                            <img src="{% static 'img/logo2.png' %}" alt="Logo">
                         </a>
                     </div>
                 </div>
@@ -51,16 +51,18 @@
                                 <li class="active"><a href="{% url 'home' %}">Homepage</a></li>
                                 <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="{% url 'movie_detail' movie_detail_slug %}">Anime Details</a></li>
-                                        <li><a href="{% url 'watch' movie_detail_slug %}">Anime Watching</a></li>
-                                        <li><a href="#">Blog Details</a></li>
-                                        <li><a href="#">Sign Up</a></li>
-                                        <li><a href="#">Login</a></li>
+                                        
+                                        <li><a href="{% url 'movie_detail' movie_detail_slug %}">Movie Details</a></li>
+                                        <li><a href="{% url 'watch' movie_detail_slug %}">Movie Watching</a></li>
+                                       {% if request.user.is_authenticated %}
+                                       <li><a href="{% url 'logout' %}">Logout</a></li>
+                                       {% else %}
+                                        <li><a href="{% url 'register' %}">Sign Up</a></li>
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                        {% endif %}
                                     </ul>
                                 </li>
-                                <li><a href="#">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
+                              
                             </ul>
                         </nav>
                     </div>
@@ -68,7 +70,11 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="./login.html"><span class="icon_profile"></span></a>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'logout' %}"><span class="fa fa-sign-out"></span></a>
+                        {% else %}
+                        <a href="{% url 'login' %}"><span class="icon_profile"></span></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -89,7 +95,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                        <a href="{% url 'home' %}"><img src="{% static 'img/logo2.png' %}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -121,8 +127,8 @@
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
+            <form class="search-model-form" method="get" action="">
+                <input type="text" id="search-input" placeholder="Search here....." name="q">
             </form>
         </div>
     </div>
@@ -136,7 +142,7 @@
     <script src="{% static 'js/mixitup.min.js' %}"></script>
     <script src="{% static 'js/jquery.slicknav.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/main.jss' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 
 
 </body>

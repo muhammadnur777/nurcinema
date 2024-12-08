@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import User
+from .models import User, UserReview
+from movies.models import Movie
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 
@@ -42,3 +43,18 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+
+@login_required
+def add_review(request , movie_slug):
+    if request.method == 'POST':
+        user = request.user
+        movie = Movie.objects.get(slug=movie_slug)
+        comment = request.POST.get('comment')
+        UserReview.objects.create(
+            user=user, movie=movie, comment=comment
+        )
+
+    return redirect('movie_detail' , movie_slug=movie_slug)
+
