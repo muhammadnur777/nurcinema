@@ -1,6 +1,6 @@
 __pycahe__
 migrations
-*.sqlite3
-media
+
+
 .venv
 .idea
