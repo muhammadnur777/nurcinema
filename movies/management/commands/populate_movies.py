@@ -7,7 +7,7 @@ fake = Faker()
 
 
 file_names = [
-    'movie_images/shrek5jpg', 'movie_images/БИТВА ПАП.jpg',
+    'movie_images/shrek5.jpg', 'movie_images/БИТВА ПАП.jpg',
     'movie_images/В БАНЮ.jpg', 'movie_images/веном 3.jpg', 'movie_images/Гладиатор 2.jpg', 'movie_images/Крик.jpg',
     'movie_images/Лунтик.jpg', 'movie_images/Маша и Медведь.jpg', 'movie_images/Моана 2.jpg', 'movie_images/Назад к динозаврам.jpg',
     'movie_images/Операция Панда.jpg', 'movie_images/пес.jpg', 'movie_images/Приключения Паддингтона 3.jpg', 
