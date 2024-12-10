@@ -17,14 +17,15 @@ file_names = [
 ]
 
 movie_title = [
-    'shrek5', 'БИТВА ПАП',
-    'в баню2', 'веном 3', 'гладиатор 2', 'крик',
-    'Лунтик', 'Маша и Медведь', 'Моана 2', 'Назад к динозаврам',
-    'Операция Панда', 'пес.jpg', 'Приключения Паддингтона 3', 
-    'Смешарики снимают кино', 'СОНИК 3 В КИНО', 'Субстанция',
-    'Супер Крылья', 'Три кота. Зимние каникулы', 'Чебурашка',
-    'Черная Пантера 2'
+    'Shrek 5', 'BATTLE OF THE DADS',
+    'To the Bathhouse 2', 'Venom 3', 'Gladiator 2', 'Scream',
+    'Luntik', 'Masha and the Bear', 'Moana 2', 'Back to the Dinosaurs',
+    'Operation Panda', 'dog.jpg', 'Paddington Adventures 3',
+    'Smeshariki Make a Movie', 'SONIC 3 IN THE CINEMA', 'Substance',
+    'Super Wings', 'Three Cats. Winter Holidays', 'Cheburashka',
+    'Black Panther 2'
 ]
+
 
 video_files = [
 
