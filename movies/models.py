@@ -64,7 +64,7 @@ class Movie(Model):
     def save(self, *args, **kwargs):
         if self.slug is None:
             try:
-                self.slug = slugify(self.title)
+                self.slug = slugify(self.title) + 'i'
             except IntegrityError:
                 self.slug += str(1)                
 
