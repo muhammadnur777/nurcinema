@@ -40,11 +40,19 @@
                         <div class="section-title">
                             <h5>Reviews</h5>
                         </div>
+                        {% for review in reviews %}
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
-                                <img src="img/anime/review-1.jpg" alt="">
+                                <img src="{{ review.movie.image.url }}" alt="">
                             </div>
                             <div class="anime__review__item__text">
+                                <h6>{{ review.user.username }}<span> 1 Hour ago</span></h6>
+                                <p>{{ review.comment }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                            <!-- <div class="anime__review__item__text">
                                 <h6>Chris Curry - <span>1 Hour ago</span></h6>
                                 <p>whachikan Just noticed that someone categorized this as belonging to the genre
                                 "demons" LOL</p>
@@ -62,8 +70,8 @@
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
                                 <img src="img/anime/review-3.jpg" alt="">
-                            </div>
-                            <div class="anime__review__item__text">
+                            </div> -->
+                            <!-- <div class="anime__review__item__text">
                                 <h6>Louis Tyler - <span>20 Hour ago</span></h6>
                                 <p>Where is the episode 15 ? Slow update! Tch</p>
                             </div>
@@ -95,7 +103,7 @@
                                 <h6>Louis Tyler - <span>20 Hour ago</span></h6>
                                 <p>Where is the episode 15 ? Slow update! Tch</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     {% if request.user.is_authenticated %}
                     <div class="anime__details__form">

@@ -16,7 +16,7 @@
                                 <div class="label">Adventure</div>
                                 <h2>{{ movie.title }}</h2>
                                 <p>{{ movie.description }}</p>
-                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="{% url 'watch' movie.slug %}"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
