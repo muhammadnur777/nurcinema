@@ -91,24 +91,36 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="anime__details__review">
-                                <div class="section-title">
+
+                                {% if reviews %}
+                                    <div class="section-title">
                                     <h5>Reviews</h5>
-                                </div>
+                                    </div>
     
-                                {% for review in reviews %}
-                                <div class="anime__review__item">
+                                    {% for review in reviews %}
+                                    <div class="anime__review__item">
                                     <div class="anime__review__item__pic">
                                         <img src="{{ review.movie.image.url }}" alt="">
                                     </div>
                                     <div class="anime__review__item__text">
-                                        <h6>{{ review.user.username }}<span> 1 Hour ago</span></h6>
+                                        <h6>{{ review.user.username }}<span>{{ review.time_posted }}</span></h6>
                                         <p>{{ review.comment }}</p>
                                     </div>
                                 </div>
-                                {% endfor %}
+                                    {% endfor %}
+                                
+                                {% else %}
+
+                                <div class="section-title">
+                                    <h5>No Reviews Yet</h5>
+                                    </div>
+                                {% endif %}
 
 
-                            </div>
+                            
+
+
+                                </div>
                             {% if request.user.is_authenticated %}
                             <div class="anime__details__form">
                                 <div class="section-title">

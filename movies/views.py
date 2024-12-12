@@ -7,7 +7,7 @@ from django.core.cache import cache
 from django.db.models import Q
 
 def home(request):
-    banners = Movie.objects.filter(type=MovieTypeChoices.BANNER)[:3]
+    banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('-id')[:3]
     regular = Movie.objects.filter(type=MovieTypeChoices.REGULAR)
     top_views = Movie.objects.all().order_by('-views')[:5]
 
@@ -46,7 +46,7 @@ def movie_detail(request, slug):
             UserReview.objects.create(
                 user=user, movie=movie, comment=comment
             )
-    reviews = UserReview.objects.order_by('-id')
+    reviews = UserReview.objects.filter(movie=movie).order_by('-id')
     you_might_like = Movie.objects.filter(type=movies.type)[:4]
    
     context = {
@@ -78,7 +78,7 @@ def watch(request, slug):
                 user=user, movie=movie, comment=comment
             )
 
-    reviews = UserReview.objects.order_by('-id')
+    reviews = UserReview.objects.filter(movie=movie).order_by('-id')
     context = {
         'movie': movie,
         'reviews': reviews
