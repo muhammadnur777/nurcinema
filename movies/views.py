@@ -35,7 +35,7 @@ def blog(request):
 
 def movie_detail(request, slug):
     
-    movies = Movie.objects.get(slug=slug)
+    movie = Movie.objects.get(slug=slug)
 
        
     if request.method == 'POST':
@@ -47,10 +47,10 @@ def movie_detail(request, slug):
                 user=user, movie=movie, comment=comment
             )
     reviews = UserReview.objects.filter(movie=movie).order_by('-id')
-    you_might_like = Movie.objects.filter(type=movies.type)[:4]
+    you_might_like = Movie.objects.filter(type=movie.type)[:4]
    
     context = {
-        'movie': movies,
+        'movie': movie,
         'reviews': reviews,
         'you_might_like': you_might_like
         }
