@@ -7,7 +7,7 @@ from django.core.cache import cache
 from django.db.models import Q
 
 def home(request):
-    banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('-id')[:3]
+    banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('id')[:3]
     regular = Movie.objects.filter(type=MovieTypeChoices.REGULAR)
     top_views = Movie.objects.all().order_by('-views')[:5]
 
