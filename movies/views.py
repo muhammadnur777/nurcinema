@@ -6,25 +6,53 @@ from users.models import UserReview
 from django.core.cache import cache
 from django.db.models import Q
 
+# def home(request):
+#     banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('id')[:3]
+#     regular = Movie.objects.filter(type=MovieTypeChoices.REGULAR)
+#     top_views = Movie.objects.all().order_by('-views')[:5]
+
+#     q = request.GET.get('q')
+
+#     if q:
+#         regular = regular.filter(title__icontains=q)
+
+#     context = {
+#         'banners': banners,
+#         'regular': regular,
+#         'top_views': top_views
+#         # 'movie_detail_slug': movie_detail_slug
+#     }
+#     print(f"{banners=}")
+
+#     return render(request, 'index.html', context=context)
+
 def home(request):
+    
     banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('id')[:3]
+    
+  
     regular = Movie.objects.filter(type=MovieTypeChoices.REGULAR)
+    
+
     top_views = Movie.objects.all().order_by('-views')[:5]
+    
+    
+    most_viewed = Movie.objects.all().order_by('-views')[:4]
 
+    
     q = request.GET.get('q')
-
     if q:
         regular = regular.filter(title__icontains=q)
 
     context = {
         'banners': banners,
         'regular': regular,
-        'top_views': top_views
-        # 'movie_detail_slug': movie_detail_slug
+        'top_views': top_views,
+        'most_viewed': most_viewed,  
     }
-    print(f"{banners=}")
 
     return render(request, 'index.html', context=context)
+
 
 
 def blog(request):
@@ -91,3 +119,6 @@ def blog(request):
 
 def categories(request):
     return render(request, 'categories.html')
+
+
+
