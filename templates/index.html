@@ -99,23 +99,27 @@
            
                             </div>
                         </div>
+
+
                         
                         <div class="product__sidebar__comment">
                             <div class="section-title">
                                 <h5>New Comment</h5>
                             </div>
                             {% for movie in latest_commented_movies %}
-                            <div class="product__sidebar__comment__item">
+                            <div class="product__sidebar__comment__item d-flex mb-4">
                                 <div class="product__sidebar__comment__item__pic">
-                                    <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+                                    <img src="{{ movie.image.url }}" alt="{{ movie.title }}" style="width: 80px; height: 100px; object-fit: cover;">
                                 </div>
-                                <div class="product__sidebar__comment__item__text">
-                                    <ul>
-                                        <li>Active</li>
-                                        <li>Movie</li>
+                                <div class="product__sidebar__comment__item__text ml-3">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item badge badge-secondary">Active</li>
+                                        <li class="list-inline-item badge badge-primary">Movie</li>
                                     </ul>
-                                    <h5><a href="{% url 'movie_detail' movie.slug %}">{{ movie.title }}</a></h5>
-                                    <span><i class="fa fa-clock-o"></i> {{ movie.userreview.latest.posted|date:"F d, Y" }}</span>
+                                    <h6 class="font-weight-bold">
+                                        <a href="{% url 'movie_detail' movie.slug %}" class="text-white">{{ movie.title }}</a>
+                                    </h6>
+                                    <span class="text-muted"><i class="fa fa-eye"></i> {{ movie.views }} Views</span>
                                 </div>
                             </div>
                             {% endfor %}
