@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-oi!oqscdbf&bpexankakx^_lsgo(q32*96$v!3$zrh5zjz-58j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['185.178.45.142', 'http://185.178.45.142', 'http://nurcinema.uz', 'www.nurcinema.uz', 'nurcinema.uz']
+ALLOWED_HOSTS = ['185.178.45.142', 'http://185.178.45.142', 'https://nurcinema.uz', 'www.nurcinema.uz', 'nurcinema.uz']
 
 
 # Application definition
