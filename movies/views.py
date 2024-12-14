@@ -35,10 +35,12 @@ def home(request):
 
     if q:
         regular = regular.filter(title__icontains=q)
+        print(f"{q}")
+        print(f"{regular}")
 
-    # Получаем фильмы с самыми новыми комментариями
+    
     latest_commented_movies = Movie.objects.annotate(
-        last_comment=Max('userreview__posted')  # Используем поле `posted`
+        last_comment=Max('userreview__posted')  
     ).filter(userreview__isnull=False).order_by('-last_comment')[:4]
 
     context = {
