@@ -10,7 +10,7 @@ from django.db.models import Max
 #     banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('id')[:3]
 #     regular = Movie.objects.filter(type=MovieTypeChoices.REGULAR)
 #     top_views = Movie.objects.all().order_by('-views')[:5]
-#     new_comment = Movie.objects
+
 #     q = request.GET.get('q')
 
 #     if q:
@@ -30,6 +30,7 @@ from django.db.models import Max
 def home(request):
     banners = Movie.objects.filter(type=MovieTypeChoices.BANNER).order_by('id')[:3]
     regular = Movie.objects.filter(type=MovieTypeChoices.REGULAR)
+    top_views = Movie.objects.all().order_by('-views')[:5]
     q = request.GET.get('q')
 
     if q:
@@ -43,7 +44,8 @@ def home(request):
     context = {
         'banners': banners,
         'regular': regular,
-        'latest_commented_movies': latest_commented_movies,
+        'top_views': top_views,
+        'latest_commented_movies': latest_commented_movies
     }
 
     return render(request, 'index.html', context=context)
