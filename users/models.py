@@ -27,6 +27,10 @@ class User(AbstractUser):
     pass
 
 
+# class Ban_User(Model):
+#     user = ForeignKey(User)
+
+
 class UserReview(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     movie = ForeignKey(Movie, on_delete=CASCADE)
